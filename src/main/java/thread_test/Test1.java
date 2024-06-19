@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class Test1 {
     public static void main(String[] args) {
-        testThread(2000); // 20416毫秒
-        testVirtualThread(1000); // 20442毫秒
+        testThread(2000); // 20512毫秒
+        testVirtualThread(2000); // 20413毫秒
     }
 
     @SneakyThrows
@@ -49,7 +49,7 @@ public class Test1 {
         ThreadFactory factory = Thread.ofVirtual().factory();
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < threadCount; i++) {
             final String threadName = STR."虚拟线程-\{i}";
             factory.newThread(() -> {
                 for (int j = 0; j < 100; j++) {
