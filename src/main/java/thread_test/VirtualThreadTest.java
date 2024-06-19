@@ -37,5 +37,10 @@ public class VirtualThreadTest {
         ThreadFactory factory = Thread.ofVirtual().factory();
         Thread virtualThread3 = factory.newThread(() -> System.out.println("virtualThread3"));
         virtualThread3.start();
+        /**
+         * 第四种创建虚拟线程的方式
+         */
+        Thread virtualThread4 = Thread.ofVirtual().unstarted(() -> System.out.println("virtualThread4"));
+        virtualThread4.start();
     }
 }
